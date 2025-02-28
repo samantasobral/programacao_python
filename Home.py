@@ -26,7 +26,7 @@ with st.container():
     st.write('- SP também possui a maior quantidade de clientes e vendedores distintos;')
     st.write('- De setembro de 2016 a agosto de 2018, as vendas aumentaram;')
     st.write('- No mesmo período, a quantidade de clientes e vendedores também aumentou;')
-    st.write('- O faturamento das categorias, incluindo frete, varia de 324.51 reais a  14 milhões de reais;')
+    st.write('- O faturamento das categorias, incluindo frete, varia de 324.51 reais a  1.400.000 reais;')
     st.write('- A categoria com o maior faturamento foi Beleza e Saúde;')
     st.write('- A categoria com o menor faturamento foi Seguros e Serviços.')
 
