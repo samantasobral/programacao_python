@@ -52,7 +52,7 @@ def visao_categorias(cat_df):
 
     return None
 
-def bignumbers(cat_df):
+def bignumbers_cat(cat_df):
        st.subheader('Indicadores Gerais')   #Subtítulo da Sessão de Big Numbers
 
        total_vendas = cat_df['total_price'].sum()
@@ -73,6 +73,6 @@ if __name__ == '__main__':
 
     filtered_cat_faturamento = filtro_faturamento(customers_df_filtred)
 
-    bignumbers(filtered_cat_faturamento)
+    bignumbers_cat(filtered_cat_faturamento)
 
     visao_categorias(filtered_cat_faturamento)
