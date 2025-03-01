@@ -52,7 +52,7 @@ def bignumbers(c_df, s_df):
 
 def ler_df_drive(file_id):
 
-      # URL do arquivo no Google Drive
+       # URL do arquivo no Google Drive
        url = f'https://drive.google.com/uc?id={file_id}'
 
        # Baixando o arquivo
