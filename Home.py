@@ -3,7 +3,7 @@
 import gdown
 import pandas as pd
 import streamlit as st
-from funcoes import filtro_checkbox_df, bignumbers, ler_df_drive, filtra_df
+from funcoes import bignumbers, ler_df_drive, filtra_df
 
 st.set_page_config(page_title = 'Dashboard - Análise das Vendas', layout = 'wide') 
 
