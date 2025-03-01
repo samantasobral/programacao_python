@@ -102,14 +102,15 @@ def visoes_temporais(c_df, s_df):
 
        return None
 
-
 #------------------------------------- DASHBOARD ----------------------------------------#
 
-customers_df_filtred, sellers_df_filtred, estados_selecionados = filtra_df(order_items_df)
+if __name__ == '__main__':
 
-bignumbers(customers_df_filtred, sellers_df_filtred)
+       customers_df_filtred, sellers_df_filtred, estados_selecionados = filtra_df(order_items_df)
 
-visoes_gerais(customers_df_filtred, sellers_df_filtred)
+       bignumbers(customers_df_filtred, sellers_df_filtred)
 
-visoes_temporais(customers_df_filtred, sellers_df_filtred)
+       visoes_gerais(customers_df_filtred, sellers_df_filtred)
+
+       visoes_temporais(customers_df_filtred, sellers_df_filtred)
 
