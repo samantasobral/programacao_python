@@ -52,6 +52,19 @@ def visao_categorias(cat_df):
 
     return None
 
+def bignumbers(cat_df):
+       st.subheader('Indicadores Gerais')   #Subtítulo da Sessão de Big Numbers
+
+       total_vendas = cat_df['total_price'].sum()
+       total_categorias = cat_df['product_category_name'].nunique()
+
+       col1, col2 = st.columns(2)    #Cria 4 colunas
+
+       col1.metric('Total de Vendas', f'R$ {total_vendas:,.2f}')
+       col2.metric('Quantidade de Categorias', f'{total_categorias:,.0f}') 
+
+       return None
+
 #------------------------------------- DASHBOARD ----------------------------------------#
 
 if __name__ == '__main__':
@@ -59,5 +72,7 @@ if __name__ == '__main__':
     customers_df_filtred, sellers_df_filtred, estados_selecionados = filtra_df(order_items_df)
 
     filtered_cat_faturamento = filtro_faturamento(customers_df_filtred)
+
+    bignumbers(filtered_cat_faturamento)
 
     visao_categorias(filtered_cat_faturamento)
