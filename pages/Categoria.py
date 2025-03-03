@@ -1,5 +1,6 @@
 #----------------------------- VISÃO POR CATEGORIAS -----------------------------------#
 
+import pandas as pd
 import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -13,7 +14,8 @@ st.title('Análise das Vendas por Categoria')  #Título da página
 definicao_parametros_graficos()
 
 #Leitura dos dados:
-order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+#order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
 
 
 #------------------------------------ FUNÇÕES ---------------------------------------------#
@@ -25,8 +27,8 @@ def filtro_faturamento(c_df):
                     sort_values('total_price', ascending = False).reset_index())
 
     # Definindo o mínimo e máximo para o slider
-    minimo = 300
-    maximo = 1400000
+    minimo = 0
+    maximo = 1450000
 
     # Criando o slider para selecionar o intervalo de faturamento
     selected_range = st.slider("Selecione a faixa de Faturamento (R$)", 
@@ -69,7 +71,7 @@ def bignumbers_cat(cat_df):
 
 if __name__ == '__main__':
 
-    customers_df_filtred, sellers_df_filtred, estados_selecionados = filtra_df(order_items_df)
+    customers_df_filtred, sellers_df_filtred, datas_selecionadas, estados_selecionados, status_selecionados = filtra_df(order_items_df)
 
     filtered_cat_faturamento = filtro_faturamento(customers_df_filtred)
 

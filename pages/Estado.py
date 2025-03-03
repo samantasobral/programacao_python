@@ -14,7 +14,9 @@ st.title('Análise das Vendas por Estado')  #Título da página
 definicao_parametros_graficos()
 
 #Leitura dos dados:
-order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+#order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+
+order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
 
 #------------------------------- FUNÇÕES ----------------------------------------------#
 
@@ -102,11 +104,12 @@ def visoes_temporais(c_df, s_df):
 
        return None
 
+
 #------------------------------------- DASHBOARD ----------------------------------------#
 
 if __name__ == '__main__':
 
-       customers_df_filtred, sellers_df_filtred, estados_selecionados = filtra_df(order_items_df)
+       customers_df_filtred, sellers_df_filtred, datas_selecionadas, estados_selecionados, status_selecionados = filtra_df(order_items_df)
 
        bignumbers(customers_df_filtred, sellers_df_filtred)
 
