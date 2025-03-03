@@ -18,20 +18,47 @@ def definicao_parametros_graficos():
 
        return None
 
+import streamlit as st
+import pandas as pd
+
 def filtra_df(df):
-       #Side Bar:
-       st.sidebar.header('Filtros')
+    # Side Bar:
+    st.sidebar.header('Filtros')
 
-       #Filtro:
-       lista_estados = sorted(list(df['seller_state'].unique()))
-       estados_selecionados = st.sidebar.multiselect("Selecione um Estado", 
-                                            options = lista_estados, 
-                                            default=lista_estados)
+    # Certifique-se de que a coluna 'order_purchase_timestamp' está no formato datetime
+    df['order_purchase_year_month'] = pd.to_datetime(df['order_purchase_year_month'], format = '%Y-%m')
+    data_minima = df['order_purchase_year_month'].min().to_pydatetime()
+    data_maxima = df['order_purchase_year_month'].max().to_pydatetime()
 
-       customers_df_filtred = df[df['customer_state'].isin(estados_selecionados)]
-       sellers_df_filtred = df[df['seller_state'].isin(estados_selecionados)]
+    # Criando o slider para selecionar o intervalo de datas
+    datas_selecionadas = st.sidebar.slider("Selecione o intervalo de data:", 
+                                           min_value=data_minima,
+                                           max_value=data_maxima,
+                                           value=(data_minima, data_maxima))
 
-       return customers_df_filtred, sellers_df_filtred, estados_selecionados
+    # Filtro de Estado:
+    lista_estados = sorted(list(df['seller_state'].unique()))
+    estados_selecionados = st.sidebar.multiselect("Selecione um Estado", 
+                                        options = lista_estados, 
+                                        default=lista_estados)
+
+    # Filtro de Status do Pedido:
+    lista_status = sorted(list(df['order_status'].unique()))
+    status_selecionados = st.sidebar.multiselect("Selecione o Status do Pedido", 
+                                     options = lista_status, 
+                                     default=lista_status)
+
+    # Aplicando Filtros:
+    df_filtered = df[(df['order_status'].isin(status_selecionados)) &
+                     ((df['order_purchase_year_month'] >= datas_selecionadas[0]) & 
+                      (df['order_purchase_year_month'] <= datas_selecionadas[1]))]
+
+    customers_df_filtred = df_filtered[df_filtered['customer_state'].isin(estados_selecionados)]
+    sellers_df_filtred = df_filtered[df_filtered['seller_state'].isin(estados_selecionados)]
+    
+    return customers_df_filtred, sellers_df_filtred, datas_selecionadas, estados_selecionados, status_selecionados
+
+
 
 def bignumbers(c_df, s_df):
        st.subheader('Indicadores Gerais')   #Subtítulo da Sessão de Big Numbers
