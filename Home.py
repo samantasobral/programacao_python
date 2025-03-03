@@ -12,8 +12,8 @@ with st.container():
     st.markdown('#### Navegue pelo menu à esquerda para visualizar as análises das vendas por: Categoria e Estado')
 
 #Leitura dos dados:
-#order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
-order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
+order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+#order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
 
 customers_df_filtred, sellers_df_filtred, datas_selecionadas, estados_selecionados, status_selecionados = filtra_df(order_items_df)
 
