@@ -14,8 +14,8 @@ st.title('Análise das Vendas por Categoria')  #Título da página
 definicao_parametros_graficos()
 
 #Leitura dos dados:
-#order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
-order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
+order_items_df = ler_df_drive('1OTzGaimK_k8ZJKmaSxrvevQH2KFmIL8e')
+#order_items_df = pd.read_csv('datasets/orders_items_cleaned.csv')
 
 
 #------------------------------------ FUNÇÕES ---------------------------------------------#
