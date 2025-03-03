@@ -18,9 +18,6 @@ def definicao_parametros_graficos():
 
        return None
 
-import streamlit as st
-import pandas as pd
-
 def filtra_df(df):
     # Side Bar:
     st.sidebar.header('Filtros')
